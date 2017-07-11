@@ -8,7 +8,7 @@ function jsToXliff12(obj, opt, cb) {
   }
 
   const builder = new xml2js.Builder({
-    rootName: 'xliff',
+    rootName: 'rigi',
     headless: opt.headless,
     pretty: opt.pretty,
     indent: opt.indent || ' ',
@@ -17,6 +17,7 @@ function jsToXliff12(obj, opt, cb) {
 
   const xmlJs = {
     $: {
+      'rigi-project-url': Object.keys(obj.resources)[0],
       'rigi-version': '2',
       'rigiSignatureFormat': '2',
       'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
@@ -28,10 +29,11 @@ function jsToXliff12(obj, opt, cb) {
   };
 
   Object.keys(obj.resources).forEach((nsName) => {
+    const ORIGINAL = nsName.split('/')[nsName.split('/').length - 1];
     const f = {
       $: {
         date: new Date().toISOString(),
-        original: nsName,
+        original: ORIGINAL,
         datatype: 'plaintext',
         'source-language': obj.sourceLanguage,
         'target-language': obj.targetLanguage

@@ -8,7 +8,7 @@ function js2xliff(obj, opt, cb) {
   }
 
   const builder = new xml2js.Builder({
-    rootName: 'xliff',
+    rootName: 'rigi',
     headless: true,
     pretty: opt.pretty,
     indent: opt.indent || ' ',
