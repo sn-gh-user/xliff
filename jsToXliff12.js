@@ -53,9 +53,9 @@ function jsToXliff12(obj, opt, cb) {
         source: obj.resources[nsName][k].source.text,
         target: {
           $: {
-            status: ''
+            state: obj.resources[nsName][k].target.status
           },
-          _: obj.resources[nsName][k].target
+          _: obj.resources[nsName][k].target.text
         }
       };
       if ('note' in obj.resources[nsName][k]) {
