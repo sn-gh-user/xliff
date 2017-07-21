@@ -21,6 +21,7 @@ function jsToXliff12(obj, opt, cb) {
       'rigi-version': '2',
       'rigiSignatureFormat': '2',
       'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+      'xmlns:rigi': 'rigi.io',
       'xsi:schemaLocation': 'urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd',
       xmlns: 'urn:oasis:names:tc:xliff:document:1.2',
       version: '1.2'
@@ -36,7 +37,8 @@ function jsToXliff12(obj, opt, cb) {
         original: ORIGINAL,
         datatype: 'plaintext',
         'source-language': obj.sourceLanguage,
-        'target-language': obj.targetLanguage
+        'target-language': obj.targetLanguage,
+        'rigi:projecturl': nsName
       },
       'body': {
         'trans-unit': []
@@ -47,7 +49,7 @@ function jsToXliff12(obj, opt, cb) {
       const u = {
         $: {
           id: k,
-          'rigi-id': '',
+          'rigi:sig': k,
           resname: obj.resources[nsName][k].source.stringId
         },
         source: obj.resources[nsName][k].source.text,
