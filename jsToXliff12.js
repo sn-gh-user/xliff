@@ -45,25 +45,28 @@ function jsToXliff12(obj, opt, cb) {
       }
     };
     xmlJs.file.push(f);
+    
     Object.keys(obj.resources[nsName]).forEach((k) => {
-      const u = {
-        $: {
-          id: k,
-          'rigi:sig': k,
-          resname: obj.resources[nsName][k].source.stringId
-        },
-        source: obj.resources[nsName][k].source.text,
-        target: {
+      if(obj.resources[nsName][k].source) {
+        const u = {
           $: {
-            state: obj.resources[nsName][k].target.status
+            id: k,
+            'rigi:sig': k,
+            resname: obj.resources[nsName][k].source.stringId
           },
-          _: obj.resources[nsName][k].target.text
+          source: obj.resources[nsName][k].source.text,
+          target: {
+            $: {
+              state: obj.resources[nsName][k].target.status
+            },
+            _: obj.resources[nsName][k].target.text
+          }
+        };
+        if ('note' in obj.resources[nsName][k]) {
+          u.note = obj.resources[nsName][k].note;
         }
-      };
-      if ('note' in obj.resources[nsName][k]) {
-        u.note = obj.resources[nsName][k].note;
+        f.body['trans-unit'].push(u);
       }
-      f.body['trans-unit'].push(u);
     });
   });
 

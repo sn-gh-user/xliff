@@ -11,9 +11,30 @@
         "type": "tag"
       },
       "/Users/federalisimo/WebStormProjects/sapserverTestMigrate"
+    ],
+    [
+      {
+        "raw": "xliff@git+https://github.com/sn-gh-user/xliff.git",
+        "scope": null,
+        "escapedName": "xliff",
+        "name": "xliff",
+        "rawSpec": "git+https://github.com/sn-gh-user/xliff.git",
+        "spec": "git+https://github.com/sn-gh-user/xliff.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:sn-gh-user/xliff.git",
+          "sshUrl": "git+ssh://git@github.com/sn-gh-user/xliff.git",
+          "httpsUrl": "git+https://github.com/sn-gh-user/xliff.git",
+          "gitUrl": "git://github.com/sn-gh-user/xliff.git",
+          "shortcut": "github:sn-gh-user/xliff",
+          "directUrl": "https://raw.githubusercontent.com/sn-gh-user/xliff/master/package.json"
+        }
+      },
+      "/Users/federalisimo/WebStormProjects/sapserverTestMigrate"
     ]
   ],
-  "_from": "xliff@latest",
+  "_from": "git+https://github.com/sn-gh-user/xliff.git",
   "_id": "xliff@2.1.0",
   "_inCache": true,
   "_location": "/xliff",
@@ -29,22 +50,30 @@
   "_npmVersion": "3.10.10",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "xliff",
+    "raw": "xliff@git+https://github.com/sn-gh-user/xliff.git",
     "scope": null,
     "escapedName": "xliff",
     "name": "xliff",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
+    "rawSpec": "git+https://github.com/sn-gh-user/xliff.git",
+    "spec": "git+https://github.com/sn-gh-user/xliff.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:sn-gh-user/xliff.git",
+      "sshUrl": "git+ssh://git@github.com/sn-gh-user/xliff.git",
+      "httpsUrl": "git+https://github.com/sn-gh-user/xliff.git",
+      "gitUrl": "git://github.com/sn-gh-user/xliff.git",
+      "shortcut": "github:sn-gh-user/xliff",
+      "directUrl": "https://raw.githubusercontent.com/sn-gh-user/xliff/master/package.json"
+    }
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/xliff/-/xliff-2.1.0.tgz",
-  "_shasum": "f2e06989b5e9960c1247832d2673cbb9318fca18",
+  "_resolved": "git+https://github.com/sn-gh-user/xliff.git#a65db43c41eb03fdc86947e5082724d1ffee5dda",
+  "_shasum": "71431eab4321c90bcc3f61cd165b086227d32883",
   "_shrinkwrap": null,
-  "_spec": "xliff",
+  "_spec": "xliff@git+https://github.com/sn-gh-user/xliff.git",
   "_where": "/Users/federalisimo/WebStormProjects/sapserverTestMigrate",
   "author": {
     "name": "adrai"
@@ -92,5 +121,5 @@
     "lint": "eslint .",
     "test": "npm run lint && mocha test"
   },
-  "version": "2.1.0"
+  "version": "2.1.1"
 }
