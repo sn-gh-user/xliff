@@ -17,9 +17,9 @@ function jsToXliff12(obj, opt, cb) {
 
   const xmlJs = {
     $: {
-      'rigi-project-url': Object.keys(obj.resources)[0],
-      'rigi-version': '2',
-      'rigiSignatureFormat': '2',
+      'rigi:project-url': Object.keys(obj.resources)[0],
+      'rigi:version': '2',
+      'rigi:signatureFormat': '2',
       'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
       'xmlns:rigi': 'rigi.io',
       'xsi:schemaLocation': 'urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd',
