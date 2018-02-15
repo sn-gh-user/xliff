@@ -2,7 +2,7 @@ const xml2js = require('xml2js');
 
 function jsToXliff12(obj, opt, cb) {
 
-  if (typeof opt === 'function') {
+  if(typeof opt === 'function') {
     cb = opt;
     opt = { headless: true, pretty: true, indent: ' ', newline: '\n' };
   }
@@ -17,11 +17,11 @@ function jsToXliff12(obj, opt, cb) {
 
   const xmlJs = {
     $: {
-      'rigi:project-url': Object.keys(obj.resources)[0],
+      'rigi:projecturl': Object.keys(obj.resources)[0],
       'rigi:version': '2',
-      'rigi:signatureFormat': '2',
+      'rigi:signatureformat': '2',
       'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
-      'xmlns:rigi': 'rigi.io',
+      'xmlns:rigi': 'www.rigi.io',
       'xsi:schemaLocation': 'urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd',
       xmlns: 'urn:oasis:names:tc:xliff:document:1.2',
       version: '1.2'
@@ -37,8 +37,7 @@ function jsToXliff12(obj, opt, cb) {
         original: ORIGINAL,
         datatype: 'plaintext',
         'source-language': obj.sourceLanguage,
-        'target-language': obj.targetLanguage,
-        'rigi:projecturl': nsName
+        'target-language': obj.targetLanguage
       },
       'body': {
         'trans-unit': []
@@ -48,15 +47,22 @@ function jsToXliff12(obj, opt, cb) {
 
     Object.keys(obj.resources[nsName]).forEach((k) => {
       if(obj.resources[nsName][k].source) {
+        const resnameObj = {
+          sig: k,
+          projecturl: Object.keys(obj.resources)[0]
+        };
+        const resnameStr = JSON.stringify(resnameObj);
+        const resnameB64Str = Buffer.from(resnameStr).toString('base64');
         const u = {
           $: {
             id: k,
             'rigi:id': k,
-            resname: obj.resources[nsName][k].source.stringId
+            'rigi:idstr': obj.resources[nsName][k].source.stringId,
+            resname: obj.resources[nsName][k].source.stringId + ' | ' + 'rigi__' + resnameB64Str + '__rigi'
           },
           source: obj.resources[nsName][k].source.text
         };
-        if ('note' in obj.resources[nsName][k]) {
+        if('note' in obj.resources[nsName][k]) {
           u.note = obj.resources[nsName][k].note;
         }
         if(obj.resources[nsName][k].source.text !== obj.resources[nsName][k].target.text) {
@@ -65,7 +71,7 @@ function jsToXliff12(obj, opt, cb) {
               state: obj.resources[nsName][k].target.status
             },
             _: obj.resources[nsName][k].target.text
-          }
+          };
         }
         f.body['trans-unit'].push(u);
       }
