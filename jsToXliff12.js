@@ -1,6 +1,6 @@
 const xml2js = require('xml2js');
 
-function jsToXliff12(obj, opt, cb) {
+function jsToXliff12(obj, sigFormat, rigiVersion, opt, cb) {
 
   if(typeof opt === 'function') {
     cb = opt;
@@ -17,14 +17,14 @@ function jsToXliff12(obj, opt, cb) {
 
   const xmlJs = {
     $: {
-      'rigi:projecturl': Object.keys(obj.resources)[0],
-      'rigi:version': '2',
-      'rigi:signatureformat': '2',
       'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
-      'xmlns:rigi': 'www.rigi.io',
       'xsi:schemaLocation': 'urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd',
       xmlns: 'urn:oasis:names:tc:xliff:document:1.2',
-      version: '1.2'
+      version: '1.2',
+      'xmlns:rigi': 'www.rigi.io',
+      'rigi:projecturl': Object.keys(obj.resources)[0],
+      'rigi:version': rigiVersion,
+      'rigi:signatureformat': sigFormat,
     },
     file: []
   };
