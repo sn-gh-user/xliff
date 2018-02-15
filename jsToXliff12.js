@@ -1,6 +1,6 @@
 const xml2js = require('xml2js');
 
-function jsToXliff12(obj, sigFormat, rigiVersion, opt, cb) {
+function jsToXliff12(obj, sigFormat, rigiVersion, projectName, opt, cb) {
 
   if(typeof opt === 'function') {
     cb = opt;
@@ -30,11 +30,10 @@ function jsToXliff12(obj, sigFormat, rigiVersion, opt, cb) {
   };
 
   Object.keys(obj.resources).forEach((nsName) => {
-    const ORIGINAL = nsName.split('/')[nsName.split('/').length - 1];
     const f = {
       $: {
         date: new Date().toISOString(),
-        original: ORIGINAL,
+        original: `Rigi.${projectName}`,
         datatype: 'plaintext',
         'source-language': obj.sourceLanguage,
         'target-language': obj.targetLanguage
