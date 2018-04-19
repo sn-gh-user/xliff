@@ -64,7 +64,7 @@ function jsToXliff12(obj, sigFormat, rigiVersion, projectName, opt, cb) {
         if('note' in obj.resources[nsName][k]) {
           u.note = obj.resources[nsName][k].note;
         }
-        if(obj.resources[nsName][k].source.text !== obj.resources[nsName][k].target.text) {
+        if(obj.resources[nsName][k].source.text !== obj.resources[nsName][k].target.text || obj.resources[nsName][k].target.status !== 'needs-translation') {
           u.target = {
             $: {
               state: obj.resources[nsName][k].target.status
