@@ -43,7 +43,6 @@ function jsToXliff12(obj, sigFormat, rigiVersion, projectName, opt, cb) {
       }
     };
     xmlJs.file.push(f);
-
     Object.keys(obj.resources[nsName]).forEach((k) => {
       if(obj.resources[nsName][k].source) {
         const resnameObj = {
@@ -62,7 +61,13 @@ function jsToXliff12(obj, sigFormat, rigiVersion, projectName, opt, cb) {
           source: obj.resources[nsName][k].source.text
         };
         if('note' in obj.resources[nsName][k]) {
-          u.note = obj.resources[nsName][k].note;
+          u.note = {
+            $: {
+              from:'rigi',
+              annotates:'target'
+            },
+            _:obj.resources[nsName][k].note
+          };
         }
         if(obj.resources[nsName][k].source.text !== obj.resources[nsName][k].target.text || obj.resources[nsName][k].target.status !== 'needs-translation') {
           u.target = {
