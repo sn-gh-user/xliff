@@ -56,25 +56,24 @@ function jsToXliff12(obj, sigFormat, rigiVersion, projectName, opt, cb) {
             id: k,
             'rigi:id': k,
             'rigi:idstr': obj.resources[nsName][k].source.stringId,
-            resname: obj.resources[nsName][k].source.stringId + ' | ' + 'rigi__' + resnameB64Str + '__rigi'
+            resname: obj.resources[nsName][k].source.stringId
           },
           source: obj.resources[nsName][k].source.text
         };
-        if('note' in obj.resources[nsName][k]) {
-          u.note = {
-            $: {
-              from:'rigi',
-              annotates:'target'
-            },
-            _:obj.resources[nsName][k].note
-          };
-        }
         if(obj.resources[nsName][k].source.text !== obj.resources[nsName][k].target.text || obj.resources[nsName][k].target.status !== 'needs-translation') {
           u.target = {
             $: {
               state: obj.resources[nsName][k].target.status
             },
             _: obj.resources[nsName][k].target.text
+          };
+        }
+        if('note' in obj.resources[nsName][k]) {
+          u.note = {
+            $: {
+              from:'rigi'
+            },
+            _:obj.resources[nsName][k].note
           };
         }
         f.body['trans-unit'].push(u);
