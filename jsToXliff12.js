@@ -68,6 +68,17 @@ function jsToXliff12(obj, sigFormat, rigiVersion, projectName, opt, cb) {
             _: obj.resources[nsName][k].target.text
           };
         }
+        u['context-group'] = {
+          $: {
+            purpose: 'information'
+          },
+          context: {
+            $: {
+              'context-type': 'x-rigi'
+            },
+            _: `${Object.keys(obj.resources)[0]}/context/signature/${k}?locale=${obj.targetLanguage}`
+          }
+        }
         if('note' in obj.resources[nsName][k]) {
           u.note = {
             $: {
