@@ -83,7 +83,7 @@
   },
   "description": "xliff2js and js2xliff converter xliff utils",
   "devDependencies": {
-    "eslint": "^3.18.0",
+    "eslint": "^6.6.0",
     "expect.js": "^0.3.1",
     "mocha": "^3.2.0"
   },
